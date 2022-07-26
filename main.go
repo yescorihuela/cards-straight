@@ -46,6 +46,14 @@ func (c *ConfigCards) isStraight(input []int) bool {
 		log.Println("Input length is greater than maximum cards config...")
 		return false
 	}
+
+	for _, v := range input {
+		if v == 0 {
+			log.Println("One or more cards have zero value...")
+			return false
+		}
+	}
+
 	cardsTranslator := map[int]int{
 		14: 1,
 		2:  2,
