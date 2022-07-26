@@ -1,5 +1,5 @@
-Go straight cards serie
-========================
+Go straight cards series
+=========================
 
 ### How to run
 
