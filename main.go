@@ -14,21 +14,22 @@ type ConfigCards struct {
 }
 
 func main() {
+	input := []int{5, 6, 7, 8, 9, 11, 12}
 	// input := []int{14, 2, 3, 4, 5, 6}
-	// input := []int{14, 2, 3, 4, 5, 6}
-	input := []int{7, 7, 12, 11, 3, 4, 14}
+	// input := []int{7, 7, 12, 11, 3, 4, 14}
 	c := NewConfigCards(5, 7)
 	fmt.Println(c.isStraight(input))
 }
 
 func NewConfigCards(straightCards, maxCards int) ConfigCards {
 	if straightCards == 0 || maxCards == 0 {
-
 		return ConfigCards{}
 	}
+
 	if straightCards > maxCards {
 		return ConfigCards{}
 	}
+
 	return ConfigCards{
 		straightCards: straightCards,
 		maxCards:      maxCards,
@@ -65,14 +66,14 @@ func (c *ConfigCards) isStraight(input []int) bool {
 	for i, card := range input {
 		stackCheckedCards = append(stackCheckedCards, cardsTranslator[card])
 		if i > 0 && len(stackCheckedCards) > 0 {
-			fmt.Println(i, stackCheckedCards)
 			diff := cardsTranslator[card] - stackCheckedCards[i-1]
+			// fmt.Println(stackCheckedCards, diff)
 			if math.Abs(float64(diff)) == 1.0 {
 				counter += 1
 			} else {
 				counter = 0
 			}
-			if counter == c.straightCards {
+			if counter == (c.straightCards - 1) {
 				return true
 			}
 		}
